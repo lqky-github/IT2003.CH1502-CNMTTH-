@@ -1,9 +1,11 @@
 # IT2003.CH1502-CNMTTH-
 Công nghệ mạng và truyền thông hiện đại
-https://github.com/lqky-github/IT2003.CH1502-CNMTTH-/blob/main/6_Cao%20hoc%20-%20Khoa%2015.2(2020)%20-%20Nho%CC%81m%2016%20-%20De%20cuong%20IPV6(09-4-2021).pdf
 
 # PHẦN 3: DEMO DUAL STACK
  ## (Sử dụng chương trình PacketTracer 7)
+ https://www.youtube.com/watch?v=Vcqz16YZ_TU
+ 
+ #### Kịch bản
  https://github.com/lqky-github/IT2003.CH1502-CNMTTH-/blob/main/Kich%20ban%20DualStack.txt
  
 Dù giao thức IPv6 có thể giải quyết được vấn đề thiếu hụt địa chỉ IP và mang nhiều ưu điểm nổi bật khi so sánh với IPv4 nhưng trong một thời gian nữa, IPv6 cũng chưa thể thay thế được hoàn toàn IPv4. Trong thời gian quá độ này, nhiều giải pháp đã được đưa ra để hệ thống mạng chạy IPv4 tồn tại song song với hệ thống mạng chạy IPv6.
@@ -30,6 +32,8 @@ Dù giao thức IPv6 có thể giải quyết được vấn đề thiếu hụt
 
 # PHẦN 4: DEMO DUAL STACK
  ## (Sử dụng chương trình GNS3)
+ https://github.com/lqky-github/IT2003.CH1502-CNMTTH-/blob/main/6_Cao%20hoc%20-%20Khoa%2015.2(2020)%20-%20Nho%CC%81m%2016%20-%20De%20cuong%20IPV6(09-4-2021).pdf
+ ### (Phần cuối tài liệu)
 
  
  
