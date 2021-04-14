@@ -1,4 +1,4 @@
-# IT2003.CH1502-CNMTTH-
+# IT2003.CH1502-CNMTTHĐ-Khoá 2020 ĐỢT 2
 Công nghệ mạng và truyền thông hiện đại
 
 # PHẦN 3: DEMO DUAL STACK
