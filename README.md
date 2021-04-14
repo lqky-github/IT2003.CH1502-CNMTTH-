@@ -32,8 +32,10 @@ Dù giao thức IPv6 có thể giải quyết được vấn đề thiếu hụt
 
 # PHẦN 4: DEMO DUAL STACK
  ## (Sử dụng chương trình GNS3)
- https://github.com/lqky-github/IT2003.CH1502-CNMTTH-/blob/main/6_Cao%20hoc%20-%20Khoa%2015.2(2020)%20-%20Nho%CC%81m%2016%20-%20De%20cuong%20IPV6(09-4-2021).pdf
+ 
  ### (Phần cuối tài liệu)
+ https://github.com/lqky-github/IT2003.CH1502-CNMTTH-/blob/main/6_Cao%20hoc%20-%20Khoa%2015.2(2020)%20-%20Nho%CC%81m%2016%20-%20De%20cuong%20IPV6(09-4-2021).pdf
+ 
 
  
  
