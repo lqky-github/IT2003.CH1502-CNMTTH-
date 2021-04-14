@@ -1,0 +1,328 @@
+Dual Stack IPv4 and IPv6
+
+Router>ena
+Router#conf t
+Enter configuration commands, one per line. End with CNTL/Z.
+Router(config)#inter serial 0/0/0
+Router(config-if)#ip add 10.1.1.1 255.255.255.0
+Router(config-if)#ipv6 add FEC0:1::1/64
+Router(config-if)#no shut
+%LINK-5-CHANGED: Interface Serial0/0/0, changed state to down
+Router(config-if)#exit
+
+Router(config)#inter gigabitEthernet 0/0
+Router(config-if)#ip add 10.0.0.1 255.255.255.0
+Router(config-if)#ipv6 address 2001::1/64
+Router(config-if)#exit
+
+Router(config)#inter gigabitEthernet 0/0
+Router(config-if)#no shut
+Router(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+Router(config-if)#exit
+
+Router(config)#router rip
+Router(config-router)#network 10.0.0.0
+Router(config-router)#exit
+
+Router(config)#ipv6 u
+Router(config)#ipv6 unicast-routing
+Router(config)#router r
+Router(config-router)#router rip
+Router(config)#ipv6 router rip CCNA
+Router(config-rtr)#exit
+
+Router(config)#inter serial 0/0/0
+Router(config-if)#ipv6 rip CCNA enable
+Router(config-if)#exit
+
+Router(config)#inter gigabitEthernet 0/0
+Router(config-if)#ipv6 rip CCNA e
+Router(config-if)#ipv6 rip CCNA enable
+Router(config-if)#exit
+
+Router(config)#end
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+Router#copy run st
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+
+
+_______________________________________________
+Router>ena
+Router#conf t
+Enter configuration commands, one per line. End with CNTL/Z.
+Router(config)#inter s0/0/0
+Router(config-if)#ip add 10.1.1.2 255.255.255.0
+Router(config-if)#ipv6 add FEC0:1::2/64
+Router(config-if)#no shut
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface Serial0/0/0, changed state to up
+Router(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0/0/0, changed state to up
+
+Router(config-if)#clock rate 64000
+Router(config-if)#clock rate 64000
+Router(config-if)#exit
+Router(config)#inter s0/0/1
+Router(config-if)#ip add 10.2.2.1 255.255.255.0
+Router(config-if)#ipv6 add FEC0:2::1/64
+Router(config-if)#clock rate 64000
+Router(config-if)#no shut
+
+%LINK-5-CHANGED: Interface Serial0/0/1, changed state to down
+Router(config-if)#exit
+Router(config)#router rip
+Router(config-router)#network 10.0.0.0
+Router(config-router)#exit
+Router(config)#ipv6 unicast-routing
+Router(config)#ipv6 router rip CCNA
+Router(config-rtr)#exit
+Router(config)#inter s0/0/0
+Router(config-if)#ipv6 rip CCNA enable
+Router(config-if)#exit
+Router(config)#inter s0/0/1
+Router(config-if)#ipv6 rip CCNA en
+Router(config-if)#ipv6 rip CCNA enable
+Router(config-if)#exit
+Router(config)#exit
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+Router#
+Router#copy run st
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+Router#
+
+
+_____________________________________
+Router>ena
+Router#conf t
+Enter configuration commands, one per line. End with CNTL/Z.
+Router(config)#inter serial 0/0/0
+Router(config-if)#ip add 10.2.2.2 255.255.255.0
+Router(config-if)#ipv6 add FEC0:2::2/64
+Router(config-if)#exit
+Router(config)#inter s0/0/0
+Router(config-if)#no shut
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface Serial0/0/0, changed state to up
+
+Router(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0/0/0, changed state to up
+
+Router(config-if)#exit
+Router(config)#inter gigabitEthernet 0/0
+Router(config-if)#ip add 10.3.3.1 255.255.255.0
+Router(config-if)#ipv6 add 2001:3::1/64
+Router(config-if)#exit
+Router(config)#router
+% Incomplete command.
+Router(config)#ipv6 un
+Router(config)#ipv6 unicast-routing
+Router(config)#router rip
+Router(config-router)#network 10.0.0.0
+Router(config-router)#exit
+Router(config)#ipv6 router rip CCNA
+Router(config-rtr)#exit
+Router(config)#inter gigabitEthernet 0/0
+Router(config-if)#no shut
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+
+Router(config-if)#ipv6 rip CCNA en
+Router(config-if)#ipv6 rip CCNA enable
+Router(config-if)#exit
+Router(config)#inter s0/0/0
+Router(config-if)#ipv6 rip CCNA en
+Router(config-if)#ipv6 rip CCNA enable
+Router(config-if)#exit
+Router(config)#exit
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#
+Router#copy run st
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+Router#
+
+
+_____________________________
+
+
+Router>sho ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+* - candidate default, U - per-user static route, o - ODR
+P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+10.0.0.0/8 is variably subnetted, 6 subnets, 2 masks
+C 10.0.0.0/24 is directly connected, GigabitEthernet0/0
+L 10.0.0.1/32 is directly connected, GigabitEthernet0/0
+C 10.1.1.0/24 is directly connected, Serial0/0/0
+L 10.1.1.1/32 is directly connected, Serial0/0/0
+R 10.2.2.0/24 [120/1] via 10.1.1.2, 00:00:26, Serial0/0/0
+R 10.3.3.0/24 [120/2] via 10.1.1.2, 00:00:26, Serial0/0/0
+
+Router>
+
+________________________________________________
+Router>sho ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+* - candidate default, U - per-user static route, o - ODR
+P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+10.0.0.0/8 is variably subnetted, 6 subnets, 2 masks
+R 10.0.0.0/24 [120/2] via 10.2.2.1, 00:00:14, Serial0/0/0
+R 10.1.1.0/24 [120/1] via 10.2.2.1, 00:00:14, Serial0/0/0
+C 10.2.2.0/24 is directly connected, Serial0/0/0
+L 10.2.2.2/32 is directly connected, Serial0/0/0
+C 10.3.3.0/24 is directly connected, GigabitEthernet0/0
+L 10.3.3.1/32 is directly connected, GigabitEthernet0/0
+
+Router>
+
+______________________________________________________
+
+Router>sho ipv6 route
+IPv6 Routing Table - 7 entries
+Codes: C - Connected, L - Local, S - Static, R - RIP, B - BGP
+U - Per-user Static route, M - MIPv6
+I1 - ISIS L1, I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary
+O - OSPF intra, OI - OSPF inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2
+ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2
+D - EIGRP, EX - EIGRP external
+R 2001::/64 [120/3]
+via FE80::201:C9FF:FE55:B801, Serial0/0/0
+C 2001:3::/64 [0/0]
+via GigabitEthernet0/0, directly connected
+L 2001:3::1/128 [0/0]
+via GigabitEthernet0/0, receive
+R FEC0:1::/64 [120/2]
+via FE80::201:C9FF:FE55:B801, Serial0/0/0
+C FEC0:2::/64 [0/0]
+via Serial0/0/0, directly connected
+L FEC0:2::2/128 [0/0]
+via Serial0/0/0, receive
+L FF00::/8 [0/0]
+via Null0, receive
+Router>
+
+_____________________________________________
+
+
+C:\>ping 10.3.3.2
+
+Pinging 10.3.3.2 with 32 bytes of data:
+
+Request timed out.
+Reply from 10.3.3.2: bytes=32 time=12ms TTL=125
+Reply from 10.3.3.2: bytes=32 time=12ms TTL=125
+Reply from 10.3.3.2: bytes=32 time=2ms TTL=125
+
+Ping statistics for 10.3.3.2:
+Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),
+Approximate round trip times in milli-seconds:
+Minimum = 2ms, Maximum = 12ms, Average = 8ms
+
+C:\>ping 10.3.3.2
+
+Pinging 10.3.3.2 with 32 bytes of data:
+
+Reply from 10.3.3.2: bytes=32 time=3ms TTL=125
+Reply from 10.3.3.2: bytes=32 time=2ms TTL=125
+Reply from 10.3.3.2: bytes=32 time=11ms TTL=125
+Reply from 10.3.3.2: bytes=32 time=12ms TTL=125
+
+Ping statistics for 10.3.3.2:
+Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+Minimum = 2ms, Maximum = 12ms, Average = 7ms
+__________________________________
+
+Packet Tracer PC Command Line 1.0
+C:\>ping 2001:3::2
+
+Pinging 2001:3::2 with 32 bytes of data:
+
+Reply from 2001:3::2: bytes=32 time=2ms TTL=125
+Reply from 2001:3::2: bytes=32 time=11ms TTL=125
+Reply from 2001:3::2: bytes=32 time=11ms TTL=125
+Reply from 2001:3::2: bytes=32 time=11ms TTL=125
+
+Ping statistics for 2001:3::2:
+Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+Minimum = 2ms, Maximum = 11ms, Average = 8ms
+
+C:\>ping 2001:3::2
+
+Pinging 2001:3::2 with 32 bytes of data:
+
+Reply from 2001:3::2: bytes=32 time=2ms TTL=125
+Reply from 2001:3::2: bytes=32 time=10ms TTL=125
+Reply from 2001:3::2: bytes=32 time=11ms TTL=125
+Reply from 2001:3::2: bytes=32 time=11ms TTL=125
+
+Ping statistics for 2001:3::2:
+Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+Minimum = 2ms, Maximum = 11ms, Average = 8ms
+
+_______________________________________
+Ki?m tra PC1 v?i Server0 (sau khi ?ã chuy?n Ipv4 => Ipv6)
+Chuy?n ??i IPV4 (10.3.3.2) => IPV6 (2001:3::240:BFF:FE1D:3219)
+C:\>ping 2001:3::240:BFF:FE1D:3219
+
+Pinging 2001:3::240:BFF:FE1D:3219 with 32 bytes of data:
+
+Reply from 2001:3::240:BFF:FE1D:3219: bytes=32 time=3ms TTL=125
+Reply from 2001:3::240:BFF:FE1D:3219: bytes=32 time=11ms TTL=125
+Reply from 2001:3::240:BFF:FE1D:3219: bytes=32 time=11ms TTL=125
+Reply from 2001:3::240:BFF:FE1D:3219: bytes=32 time=12ms TTL=125
+
+Ping statistics for 2001:3::240:BFF:FE1D:3219:
+Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+Minimum = 3ms, Maximum = 12ms, Average = 9ms
+
+C:\>
+
+_________________________________________
+Ki?m tra 02 máy Ipv6 v?i nhau (PC1 và PC2)
+C:\>ping 2001::2E0:B0FF:FEDE:6B1C
+
+Pinging 2001::2E0:B0FF:FEDE:6B1C with 32 bytes of data:
+
+Reply from 2001::2E0:B0FF:FEDE:6B1C: bytes=32 time=1ms TTL=128
+Reply from 2001::2E0:B0FF:FEDE:6B1C: bytes=32 time<1ms TTL=128
+Reply from 2001::2E0:B0FF:FEDE:6B1C: bytes=32 time<1ms TTL=128
+Reply from 2001::2E0:B0FF:FEDE:6B1C: bytes=32 time<1ms TTL=128
+
+Ping statistics for 2001::2E0:B0FF:FEDE:6B1C:
+Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+Minimum = 0ms, Maximum = 1ms, Average = 0ms
+
+C:\>
